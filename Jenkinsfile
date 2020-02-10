@@ -8,12 +8,12 @@ git 'https://github.com/Radhika589/fooproject.git'
 }
 stage('Build') {
 steps {
-bat "mvn compile"
+sh "mvn compile"
 }
 }
 stage('Test') {
 steps {
-bat "mvn test"
+sh "mvn test"
 }
 post {
 always {
