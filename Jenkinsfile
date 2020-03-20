@@ -16,6 +16,30 @@ pipeline {
                 sh "mvn test"
             }
         }
+       stage('Robot Framework System tests with Selenium') {
+            steps {
+                sh 'robot --variable BROWSER:headlesschrome -d Results  Tests'
+            }
+            post {
+                always {
+                    script {
+                          step(
+                                [
+                                  $class              : 'RobotPublisher',
+                                  outputPath          : 'results',
+                                  outputFileName      : '**/output.xml',
+                                  reportFileName      : '**/report.html',
+                                  logFileName         : '**/log.html',
+                                  disableArchiveOutput: false,
+                                  passThreshold       : 50,
+                                  unstableThreshold   : 40,
+                                  otherFiles          : "**/*.png,**/*.jpg",
+                                ]
+                          )
+                    }
+                }
+            }
+        }
        stage('newman') {
             steps {
                 sh 'newman run Restful_Booker.postman_collection.json --environment Restful_Booker.postman_environment.json --reporters junit'
@@ -30,7 +54,7 @@ pipeline {
 
     post {
         always {
-            junit '**/TEST.xml'
+            junit '**/TEST*.xml'
             emailext attachLog: true, attachmentsPattern: '**/TEST*xml', body: '', recipientProviders: [culprits()], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
 
         }
