@@ -10,7 +10,7 @@ Test Teardown   End Web Test
 *** Variables ***
 
 ${url}           http://rental10.infotiv.net/
-${browser}       chrome
+${BROWSER}       chrome
 ${about_url}     http://rental10.infotiv.net/webpage/html/gui/about.php
 ${home_url}      http://rental10.infotiv.net/webpage/html/gui/index.php
 
