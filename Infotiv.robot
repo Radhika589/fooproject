@@ -2,7 +2,7 @@
 
 Library          SeleniumLibrary
 Library          DateTime
-Resource         Resources  RSLab2keywords.robot
+Resource         RSLab2keywords.robot
 #Test Template   Invalid Login
 Test Setup      Begin Web Test
 Test Teardown   End Web Test
