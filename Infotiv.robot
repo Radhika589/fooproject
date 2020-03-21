@@ -2,15 +2,15 @@
 
 Library          SeleniumLibrary
 Library          DateTime
-Resource         RSLab2keywords.robot
+Resource         Lab2Keywords.robot
 #Test Template   Invalid Login
-Test Setup      Begin Web Test
-Test Teardown   End Web Test
+Test Setup       Begin Web Test
+Test Teardown    End Web Test
 
 *** Variables ***
 
 ${url}           http://rental10.infotiv.net/
-${BROWSER}       chrome
+${browser}       chrome
 ${about_url}     http://rental10.infotiv.net/webpage/html/gui/about.php
 ${home_url}      http://rental10.infotiv.net/webpage/html/gui/index.php
 
