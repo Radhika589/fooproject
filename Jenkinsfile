@@ -52,6 +52,16 @@ pipeline {
                           }
                        }
                       }
+       stage('Jacoco coverage report') {
+                     steps {
+                         sh "mvn jacoco:jacoco"
+                          }
+                      post {
+                          always {
+                              junit '**/TEST*.xml'
+                          }
+                       }
+                      }
 
        stage('newman') {
             steps {
