@@ -43,7 +43,7 @@
                         <id>coverage-report</id>
                         <phase>post-integration-test</phase>
                         <goals>
-                            <goal>report</goal>
+                            <goal>jacoco</goal>
                         </goals>
                     </execution>
                 </executions>
