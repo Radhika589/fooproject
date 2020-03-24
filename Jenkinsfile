@@ -52,18 +52,7 @@ pipeline {
                           }
                        }
                       }
-       stage('Jacoco coverage report') {
-                     steps {
-                         sh "mvn jacoco:jacoco"
-                          }
-                      post {
-                          always {
-                              junit '**/TEST*.xml'
-                          }
-                       }
-                      }
-
-       stage('newman') {
+              stage('newman') {
             steps {
                 sh 'newman run Restful_Booker.postman_collection.json --environment Restful_Booker.postman_environment.json --reporters junit'
             }
